@@ -1,0 +1,108 @@
+Conceito do git:
+O Git é um sistema para controle de versão de arquivos, muito utilizado por desenvolvedores,
+para controlar as modificações de seus projetos e arquivos.
+Com o Git, podemos criar todo o histórico de alterações dos arquivos de código-fonte de projetos e, assim,
+facilitar o gerenciamentos de nossos projetos.
+
+Conceito de repositório:
+Repositório: 
+Diretório que vai comportar os nossos arquivos.
+
+Repositório local:
+É um repositório onde os códigos são armazenados e versionados localmente, sem a necessidade de um serviço externo.
+
+Repositório remoto:
+É um repositório onde os códigos são armazenados e versionados remotamente, utilizando serviços como GitHub, Bitbucket ou Gitlab.
+
+//Criando um repositório. 
+Comando: git init
+Este comando faz com que o nosso diretório passe a comportar um repositório git.
+Após utilizarmos o comando git init, o git criará um diretório oculto chamado .git, este diretório conterá todos os arquivos de configuração do git.
+Quando criamos um repositório com o git init, também estamos automaticamente criando a branch master.
+
+*Verificando o status da branch/repositório que estamos utilizando:
+comando: git status
+Este comando mostrará as seguintes informações:
+-O nome da branch em que estamos.
+-Os commits.
+-Os arquivos não marcados, não rastreados, com o git add.
+-Os arquivos marcados com o git add (adicionados).
+
+**Para que um arquivo seja gerenciado pelo git, precisamos adiciona-lo nele, após adicionarmos o arquivo, o git
+passará a gerencia-lo. Esta gerência consiste em controlar as alterações, os commits, o histórico, rastreamento e entre outros.
+git add
+
+**Estados de um arquivo no git
+-Modificado: O arquivo possui o estado de modificado, quando há alguma alteração no arquivo. Estas alterações podem ser tanto de conteúdo, quanto de inserção ou exclusão do arquivo.
+-Preparado: O possui possui o estado de preparado quando ele é adicionado ao versionamento, utilizando o comando git add.
+-Consolidado: O arquivo possui o estado de consolidado, quando ele foi commitado, sendo portanto, consolidado.
+
+**Conceito de commit
+Podemos classificar o commit como uma forma de salvar as alterações que fizemos no nosso arquivo.
+Quando executamos o commit, o git solicita que escrevamos um comentário/descrição daquela alteração, esse comentário servirá de descrição sobre o commit.
+A criação de commits permite que tenhamos um histórico de alterações de um determinado arquivo.
+
+**Configurando o usuário do git:
+git config --global user.name "SEU NOME"
+
+**Configurando o e-mail do git:
+git config --global user.email "SEU EMAIL"
+
+*Realizando o commit
+git commit -m "comentário do commit"
+
+Entendendo o comando:
+git -> acionamos o git
+commit -> fazemos o processo relacionado ao envio das alterações para o git
+-m -> permite a inserção de uma mensagem
+
+Após fazermos o commit, o git entende que o arquivo está registrado e está sob a gerência do git.
+Portanto, caso venhamos a fazer uma alteração neste arquivo, e na sequência utilizarmos o comando git status, veremos que receberemos uma mensagem,
+apontando que o arquivo alterado, neste caso o index.html, sofreu alterações e deve ser salvo novamente, através do git add + git commit.
+Ou deve ter suas alterações descartadas, através do comando git restore.
+
+**Histórico de alterações de arquivos:
+-> Permite voltar commits já realizados.
+-> Permite consultar as alterações de um arquivo
+
+**Consultando o histórico de commits
+git log
+
+**Saindo do histórico de commits:
+..q
+
+**Desfazendo um commit do do histórico
+Comando: git revert códigoDoCommit
+Fará com que um commit seja desfeito, anulando as alterações de um commit. 
+Os outros commits, anteriores e posteriores ao commit que será anulado, continuam intactos.
+Cria um novo commit, anulando as alterações do commit passado por código, através do git revert e na sequência, envia este novo commit.
+
+Caso venhamos a chamar o comando git revert, em um commit errado, podemos utilizar os seguintes comandos, para cancelar o revert:
+git revert --abort -> Aborta o revert
+git revert --skip  -> Pula esse patch
+
+Podemos reverter um commit, gerado por um outro revert, fazendo a reversão de uma reversão.
+
+**Ligando um repositório git local, com um repositório git na nuvem
+Utilizamos o comando git remote add origin endereçoRepositório
+Setando a variável origin:
+Exemplo: git remote add origin https://EderJames@bitbucket.org/EderJames/angular-introducao.git
+
+-> Após fazermos a ligação entre o repositório local e o repositório remoto, precisamos verificar se ela está funcionando, através do seguinte comando:
+Para bitbucket: ssh -T git@bitbucket.org
+Para git: git@github.com
+
+-> Este comando fará com que todo o código local passe a ter uma ligação com o repositório remoto.
+-> É importante observar que o processo de ligação entre o repositório local e o repositório remoto, não faz com que o repositório remoto receba os código do repositório local,
+para que o repositório remoto receba esses dados, precisamo envia-los através do comando push, seguindo o próximo item, abaixo.
+
+**Enviando o código local para o GitHub/BitBucket/GitLab
+git push -u origin master
+
+**Buscando o código do GitHub/BitBucket/GitLab
+Este comando fará com que o git puxe os dados do repositório remoto e adicione eles ao nosso projeto.
+git pull origin master
+
+*Conceito de branch, no git:
+Uma branch no git é um ponteiro para as alterações feitas nos arquivos do projeto.
+Ela é muito útil quando queremos adicionar um novo recurso ou corrigir um erro, gerando uma nova ramificação sem alterar a ramificação estável, garantindo a integridade do código que já estava funcionando.
