@@ -104,5 +104,21 @@ Este comando fará com que o git puxe os dados do repositório remoto e adicione
 git pull origin master
 
 *Conceito de branch, no git:
+O conceito de branch pode se entendido como uma ramificação do código do repositório principal.
 Uma branch no git é um ponteiro para as alterações feitas nos arquivos do projeto.
 Ela é muito útil quando queremos adicionar um novo recurso ou corrigir um erro, gerando uma nova ramificação sem alterar a ramificação estável, garantindo a integridade do código que já estava funcionando.
+
+Para criarmos uma branch, podemos utilizar o comando git ou a interface de usuário, do repositório remoto que estamos utilizando.
+-> Criando por interface, no bitbucket:
+Vamos até a página branch, presente no nosso repositório e clicamos no botão "Create branch".
+
+-> Criando por terminal, através da linha de comando:
+--Observação: para utilizarmos este comando, devemos estar no repositório/branch que queremos clonar.
+git branch nome-branch
+
+Observação sobre a criação de branch via terminal:
+Após criarmos a branch através do terminal, devemos lembrar de utilizar o comando git push -u origin nova-branch.
+Este comando fará com que a criação da branch seja enviada para o repositório.
+
+Alterando a branch que estamos utilizando:
+git switch nome-branch
