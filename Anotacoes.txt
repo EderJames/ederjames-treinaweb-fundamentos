@@ -116,4 +116,9 @@ Vamos até a página branch, presente no nosso repositório e clicamos no botão
 --Observação: para utilizarmos este comando, devemos estar no repositório/branch que queremos clonar.
 git branch nome-branch
 
+Observação sobre a criação de branch via terminal:
+Após criarmos a branch através do terminal, devemos lembrar de utilizar o comando git push -u origin nova-branch.
+Este comando fará com que a criação da branch seja enviada para o repositório.
+
 Alterando a branch que estamos utilizando:
+git switch nome-branch
