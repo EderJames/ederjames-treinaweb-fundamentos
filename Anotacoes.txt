@@ -12,7 +12,7 @@ Repositório local:
 É um repositório onde os códigos são armazenados e versionados localmente, sem a necessidade de um serviço externo.
 
 Repositório remoto:
-É um repositório onde os códigos são armazenados e versionados remotamente, utilizando serviços como GitHub, Bitbucket ou Gitlab.
+É um repositório onde os códigos são armazenados e versionados remotamente, utilizando serviços como GitHub, Bitbucket ou GitLab.
 
 //Criando um repositório. 
 Comando: git init
@@ -71,7 +71,7 @@ git log
 **Saindo do histórico de commits:
 ..q
 
-**Desfazendo um commit do do histórico
+**Desfazendo um commit do histórico
 Comando: git revert códigoDoCommit
 Fará com que um commit seja desfeito, anulando as alterações de um commit. 
 Os outros commits, anteriores e posteriores ao commit que será anulado, continuam intactos.
@@ -123,8 +123,73 @@ Este comando fará com que a criação da branch seja enviada para o repositóri
 Alterando a branch que estamos utilizando:
 git switch nome-branch
 
-Conceito de pull-request:
+**Listando as branches disponíveis
+Para listarmos as nossas branches locais, utilizamos o comando git branch.
+Para listarmos as nossas branches remotas, utilizamos o comando git branch -r 
+
+**Conceito de pull-request:
 O pull request é uma solicitação de união de dois códigos, entretanto, esta solicitação criará um local de discussão sobre a alteração que será adicionada ao branch principal.
 Este local é representado como uma interface web, ela permite que a alteração seja discutida e alterada em uma página, semelhante a um fórum, onde os membros do projeto podem participar e colaborar.
 Após a análise do pull request, podemos fazer o processo de merge, fazendo com que as alterações do pull request sejam mescladas com o código do projeto, no branch principal.
 
+**Entendendo o comando checkout:
+O checkout serve para alternar entre versões de código já existentes no sistema local, ou seja, alternar entre as branches locais.
+O comando checkout, opera em três entidades distintas: arquivos, commits e branches.
+Exemplo:
+Suponhamos que temos três branches no nosso repositório local, para listas elas, utilizamos o comando git branch.
+-> git branch
+-> branches listadas:
+funcionalidade-cadastro-pessoa
+funcionalidade-cadastro-veiculo
+funcionalidade-cadastro-dependente
+
+Nesta situação, vamos utilizar o comando git checkout nome-branch, para navegar entre as branches do git branch.
+Selecionando por exemplo, a branch funcionalidade-cadastro-pessoa.
+Comando:
+-> git checkout funcionalidade-cadastro-pessoa
+
+Outra observação sobre o comando git checkout: Podemos utilizar o comando checkout com o atributo -b.
+Este atributo funciona como um atalho, ele diz para o git, que o comando git branch deve ser executado antes do git checkout, ele é utilizado para mudarmos para uma branch e automaticamente já criarmos ela.
+Exemplo:
+Ainda não temos branch funcionalidade-cadastro-plano-saude.
+Utilizamos o comando git checkout -b funcionalidade-cadastro-plano-saude, para criarmos este branch e logo na sequência, mudarmos para ele.
+
+Criando uma branch através de outra branch, com o comando checkout:
+-> git checkout -b <new-branch> <existing-branch>
+Caso não seja passado o existing-branch, ele pegará o head.
+
+**Buscando o conteúdo de um branch remoto
+->Entendendo o git fetch e o git pull
+Quando trabalhamos em equipe, sempre devemos estar atentos para a atualização do código do nosso repositório local com o nosso repositório remoto.
+Para executarmos essa atualização, podemos utilizar dois comandos do git: git fetch e git pull.
+
+-> git fetch:
+Este comando fará o download dos arquivos, documentos, pastas e commits da branch remota, porém, ele não executará o merge destes arquivos na nossa branch, portanto não teremos o risco de comprometer o nosso trabalho,
+visto que as alterações não serão mescladas ao nosso repositório local.
+Para entendermos o mecanismo do fetch, precisamos compreender a forma como o git armazena os repositório locais e os repositórios remotos.
+Repositórios locais: Os códigos dos repositórios locais são armazenados no seguinte caminho: .git/refs/heads.
+Repositórios remotos: Os códigos dos repositórios remotos são armazenados no seguinte caminho: .git/refs/remotes.
+
+Quando utilizamos o git fetch, estamos baixando as atualizações do repositório remoto, para os repositórios remotos da nossa máquina, entretanto, não estamos fazendo o merge destas atualizações, com o nosso repositório local.
+
+Formas de utilizar o git fetch:
+=> git fetch : Baixará todos os novos arquivos, documentos e commits de todas as branches de um repositório. 
+
+=> git fetch <remote> <branch> : Baixará todos os novos arquivos, documentos e commits de uma branch específica, do repositório. 
+
+=> git fetch all : Baixará todos os arquivos, documentos e commits de todos os repositórios e suas branches.
+
+-> git pull:
+O comando git pull é mais direto, ele baixará os arquivos, documentos, pastas e commits do repositório remoto, e logo na sequência ele executará o merge dessas atualizações, com o nosso branch local.
+
+Formas de utilizar o git pull:
+
+**Executando um merge, através das linhas de comando do terminal
+Para executarmos um merge através do terminal de comando, acessar o caminho da branch que enviará as alterações para o merge e
+executar o seguinte comando:
+->git fetch origin
+
+Após executarmos o git fetch, executamos o comando de git checkout e selecionamos a branch que vamos mesclar.
+git checkout nome-branch
+
+merge -> https://www.atlassian.com/br/git/tutorials/using-branches/git-merge
