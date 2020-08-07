@@ -138,7 +138,7 @@ Após a análise do pull request, podemos fazer o processo de merge, fazendo com
 O checkout serve para alternar entre versões de código já existentes no sistema local, ou seja, alternar entre as branches locais.
 O comando checkout, opera em três entidades distintas: arquivos, commits e branches.
 Exemplo:
-Suponhamos que temos três branches no nosso repositório local, para listas elas, utilizamos o comando git branch.
+Suponhamos que temos três branches no nosso repositório local, para listar elas, utilizamos o comando git branch.
 -> git branch
 -> branches listadas:
 funcionalidade-cadastro-pessoa
