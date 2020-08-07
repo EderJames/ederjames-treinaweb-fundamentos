@@ -138,7 +138,7 @@ Após a análise do pull request, podemos fazer o processo de merge, fazendo com
 O checkout serve para alternar entre versões de código já existentes no sistema local, ou seja, alternar entre as branches locais.
 O comando checkout, opera em três entidades distintas: arquivos, commits e branches.
 Exemplo:
-Suponhamos que temos três branches no nosso repositório local, para listas elas, utilizamos o comando git branch.
+Suponhamos que temos três branches no nosso repositório local, para listar elas, utilizamos o comando git branch.
 -> git branch
 -> branches listadas:
 funcionalidade-cadastro-pessoa
@@ -187,11 +187,22 @@ O comando git pull é mais direto, ele baixará os arquivos, documentos, pastas 
 Formas de utilizar o git pull:
 
 **Executando um merge, através das linhas de comando do terminal
-Para executarmos um merge através do terminal de comando, acessar o caminho da branch que enviará as alterações para o merge e
-executar o seguinte comando:
-->git fetch origin
+Antes de executarmos o merge, devemos utilizar o comando fetch, para atualizar a branch que receberá as alterações de merge.
+Neste cenário, vamos supor que temos a branch pagina-contato e temos a branch master. A branch pagina-contato, é uma derivação da branch master.
+Após concluirmos a funcionalidade da branch pagina-contato, devemos acessar a branch master através do terminal e na sequência, utilizamos o seguinte comando:
+git fetch origin master
 
-Após executarmos o git fetch, executamos o comando de git checkout e selecionamos a branch que vamos mesclar.
-git checkout nome-branch
+Este comando fará com que a branch master remota, seja atualizada.
+Após isso, podemos executar o comando de merge.
+Para executarmos o merge, devemos utilizar o seguinte comando:
+-> git merge + o nome da branch que enviará os commits, exemplo:
+-> git merge nome-branch
 
-merge -> https://www.atlassian.com/br/git/tutorials/using-branches/git-merge
+Após executarmos o merge, teremos duas situações:
+1 - Merge feito com sucesso e um commit do merge
+
+2- Conflito nos arquivos e necessidade de correção manual.
+Nesta situação de conflito, devemos alterar manualmente os arquivos conflitantes e na sequência utilizar o git add nome-arquivo-conflitante e logo depois o git commit.
+Após esse procedimento, utilizamos o comando git push -u origin master, e então enviamos os commits da branch, para o nosso repositório remoto.
+
+Referência para o merge -> https://www.atlassian.com/br/git/tutorials/using-branches/git-merge
