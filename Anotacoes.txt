@@ -98,10 +98,12 @@ para que o repositório remoto receba esses dados, precisamo envia-los através 
 
 **Enviando o código local para o GitHub/BitBucket/GitLab
 git push -u origin master
+git push -u origin nome-branch-remota
 
 **Buscando o código do GitHub/BitBucket/GitLab
 Este comando fará com que o git puxe os dados do repositório remoto e adicione eles ao nosso projeto.
 git pull origin master
+git pull origin nome-branch-remota
 
 *Conceito de branch, no git:
 O conceito de branch pode se entendido como uma ramificação do código do repositório principal.
