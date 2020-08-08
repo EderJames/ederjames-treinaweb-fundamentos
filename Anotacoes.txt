@@ -206,3 +206,10 @@ Nesta situação de conflito, devemos alterar manualmente os arquivos conflitant
 Após esse procedimento, utilizamos o comando git push -u origin master, e então enviamos os commits da branch, para o nosso repositório remoto.
 
 Referência para o merge -> https://www.atlassian.com/br/git/tutorials/using-branches/git-merge
+
+**Clonando repositórios
+Vamos até a pasta em que pretendemos colocar o repositório e utilizar o seguinte comando:
+git clone git@nomeRepositorioRemoto.org:Usuario/nome-repositorio.git.
+
+Exemplo:
+git clone git@bitbucket.org:EderJames/angular-introducao.git
